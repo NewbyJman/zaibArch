@@ -3,7 +3,7 @@ echo "1. Custom"
 echo "2. Not Custom"
 read dType
 
-if [ $dType -eq 2 ]; then
+if [ $dType == 2 ]; then
     echo "Select environment:"
     echo "1. Plasma full"
     echo "2. Plasma base"
@@ -11,9 +11,9 @@ if [ $dType -eq 2 ]; then
     echo "4. Cinammon"
     echo "5. Openbox"
     read dE
-    if [ $de -eq 4 ]; then
+    if [ $de == 4 ]; then
         dM="lightdm"
-    elif [ $de -eq 5 ]; then
+    elif [ $de == 5 ]; then
         dM="lxdm"
     else
         dM="sddm"
@@ -29,10 +29,10 @@ cd yay
 makepkg -si --noconfirm
 cd ~/
 
-if [ $dType -eq 1 ]; then
+if [ $dType == 1 ]; then
     sh environments/zaibDE.sh
     dM="sddm"
-elif [ $dType -eq 2 ]; then
+elif [ $dType == 2 ]; then
     sh environments.sh $dM $dE
 fi
 
@@ -46,7 +46,7 @@ sudo systemctl --user --now enable pipewire pipewire-pulse pipewire-media-sessio
 
 sh driverInstall.sh
 
-if [ $dM -ne "lxdm" ]; then
+if [ $dM != "lxdm" ]; then
     echo "Set nvidia as default GPU"
     yay -S envycontrol --noconfirm --noremovemake --noanswerclean --noanswerdiff
     sudo envycontrol -s nvidia --dm $dM
