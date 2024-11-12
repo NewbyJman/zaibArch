@@ -92,7 +92,6 @@ sed -i "s/^#ParallelDownloads = .*/ParallelDownloads = 5/" /etc/pacman.conf
 sed -i "/^ParallelDownloads = 5.*/a ILoveCandy" /etc/pacman.conf
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Syu
-sed -i "s/^PS1=.*/PS1='\\\n\\\\[\\\\e[97;48;5;54m\\\\] \\\\u@\\\\[\\\\e[3m\\\\]\\\\h\\\\[\\\\e[23m\\\\] \\\\[\\\\e[48;5;129m\\\\]٭\\\\[\\\\e[48;5;54m\\\\] \\\\w \\\\n\\\\[\\\\e[0;38;5;129m\\\\]\\\\$ \\\\[\\\\e[0m\\\\]'/" /etc/skel/.bashrc
 
 if [ $swapBool == "y" ]; then
     echo "Creating swap file"
@@ -108,7 +107,6 @@ echo "root:123" | chpasswd
 useradd -m $userName
 echo "${userName}:${userPassword}" | chpasswd
 echo '${userName} ALL=(ALL:ALL) ALL' | sudo EDITOR='tee -a' visudo
-sed -i "s/^PS1=.*/PS1='\\\n\\\\[\\\\e[38;5;54m\\\\]╭─\\\\[\\\\e[97;48;5;54m\\\\] \\\\u\\\\[\\\\e[22m\\\\] 🟑 \\\\[\\\\e[3m\\\\]\\\\h\\\\[\\\\e[23;1m\\\\] \\\\[\\\\e[0;38;5;54;48;5;92m\\\\]\\\\[\\\\e[97m\\\\] \\\\[\\\\e[2m\\\\]\\\\@\\\\[\\\\e[22m\\\\] \\\\[\\\\e[38;5;92;48;5;129m\\\\]\\\\[\\\\e[97m\\\\] \\\\w\\\\[\\\\e[0;38;5;129m\\\\]\\\\[\\\\e[0m\\\\]\\\\n\\\\[\\\\e[38;5;54m\\\\]╰➤ \\\\[\\\\e[38;5;129;1m\\\\]\\\\$ \\\\[\\\\e[0m\\\\]'/" /home/${userName}/.bashrc
 EOF
 
 arch-chroot /mnt sh postMount.sh
