@@ -10,7 +10,7 @@ PKGS=(
 
     # Desktop utilities
     "lxtask"
-    "Xarchiver"
+    "xarchiver"
     
     # Pipewire audio
     "pipewire pipewire-alsa pipewire-media-session pipewire-pulse"
