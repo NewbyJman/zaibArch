@@ -3,12 +3,12 @@ read hostName
 echo "Enter username"
 read userName
 echo "Enter password"
-read userPassword -s
+read userPassword
 echo "Enter Timezone (eg: Asia/Dubai)"
 read timeZone
 echo "Create swap file? (y/n)"
 read swapBool
-if [ $swapBool -eq "y" ]; then
+if [ $swapBool == "y" ]; then
     echo "Enter swap size (GiB):"
     read swapSize
 fi
@@ -94,7 +94,7 @@ sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Syu
 sed -i "s/^PS1=.*/PS1='\\\\n\\\\[\\\\e[97;48;5;54m\\\\] \\\\u@\\\\[\\\\e[3m\\\\]\\\\h\\\\[\\\\e[23m\\\\] \\\\[\\\\e[48;5;129m\\\\]٭\\\\[\\\\e[48;5;54m\\\\] \\\\w \\\\n\\\\[\\\\e[0;38;5;129m\\\\]\\\\$ \\\\[\\\\e[0m\\\\]'/" /etc/skel/.bashrc
 
-if [ $swapBool -eq "y" ]; then
+if [ $swapBool == "y" ]; then
     echo "Creating swap file"
     mkswap -U clear --size ${swapSize}G --file /swapfile
     swapon /swapfile
