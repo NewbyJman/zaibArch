@@ -1,6 +1,8 @@
 # Import media
 sudo mkdir -p ~/.local/share/gitMedia
 sudo cp -f ~/zaibArch/media/* ~/.local/share/gitMedia/
+sudo rm ~/.bashrc
+sudo cp ~/zaibArch/configs/bashrc ~/.bashrc
 
 # Configure SDDM
 echo "Downloading sddm theme"
