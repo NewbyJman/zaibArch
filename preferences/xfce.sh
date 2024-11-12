@@ -25,7 +25,7 @@ sudo rm -r gtk
 yay -S dracula-gtk-theme --noconfirm --removemake --noanswerclean --noanswerdiff
 
 echo "Adding icons"
-sudo tar -xvzf ~/zaibArch/configs/zaib-icons.tar.gz /usr/share/icons/zaib-icons
+sudo tar -xvzf ~/zaibArch/configs/zaib-icons.tar.xz /usr/share/icons/
 
 # Configure global theme, cursor, icons
 xfconf-query -c xsettings -p /Net/ThemeName -n -t string -s "Dracula"
