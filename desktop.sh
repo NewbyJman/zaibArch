@@ -25,15 +25,15 @@ echo "Building yay"
 sudo pacman -S "go" --noconfirm --needed
 cd ~/
 git clone https://aur.archlinux.org/yay.git
-cd yay
+cd ~/yay
 makepkg -si --noconfirm
 cd ~/
 
 if [ $dType == 1 ]; then
-    sh environments/zaibDE.sh
+    sh ~/zaibArch/environments/zaibDE.sh
     dM="sddm"
 elif [ $dType == 2 ]; then
-    sh environments.sh $dM $dE
+    sh ~/zaibArch/environments.sh $dM $dE
 fi
 
 sudo systemctl enable $dM bluetooth.service NetworkManager.service ntpd
