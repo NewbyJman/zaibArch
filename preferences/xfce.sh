@@ -3,6 +3,7 @@ USER_NAME=zaib
 REPO_DIR=/home/$USER_NAME/zaibArch
 
 # Import media
+sudo mkdir -p $XML_LOCATION
 sudo mkdir -p /home/$USER_NAME/.local/share/gitMedia
 sudo cp -f $REPO_DIR/media/* /home/$USER_NAME/.local/share/gitMedia/
 
@@ -15,6 +16,7 @@ sudo bash -c 'sed -i "s/^Current=.*/Current=zaib-purple/" /lib/sddm/sddm.conf.d/
 sudo bash -c 'sed -i "s/^CursorTheme=.*/CursorTheme=Dracula-cursors/" /lib/sddm/sddm.conf.d/default.conf'
 sudo cp /home/$USER_NAME/.local/share/gitMedia/gintoki.png /usr/share/sddm/faces/$USER_NAME.face.icon
 sudo cp /home/$USER_NAME/.local/share/gitMedia/gintoki.png /home/$USER_NAME/.face
+sudo mkdir -p /usr/share/sddm/themes
 sudo cp -f $REPO_DIR/sddm/zaib-purple /usr/share/sddm/themes/zaib-purple
 
 # Download global theme, cursors, icons
@@ -28,18 +30,19 @@ sudo rm -r gtk
 yay -S dracula-gtk-theme --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 
 echo "Adding icons"
-sudo pacman -S papirus
+sudo pacman -S papirus --noconfirm --needed
 yay -S papirus-folders-git --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 papirus-folders -C violet --theme Papirus
 papirus-folders -C violet --theme Papirus-Dark
 sudo pacman -S python-cairosvg --noconfirm --needed
 sudo python3 $REPO_DIR/iconSetter/icons.py
+sudo rm -r /usr/share/icons/Papirus-Light
 
 # Configure global theme, cursor, icons
 xfconf-query -c xsettings -p /Net/ThemeName -n -t string -s "Dracula"
-xfconf-query -c xsettings -p /Net/IconThemeName -n -t string -s "zaib-icons"
+xfconf-query -c xsettings -p /Net/IconThemeName -n -t string -s "Papirus-Dark"
 xfconf-query -c xsettings -p /Gtk/FontName -n -t string -s "System-ui 10"
-xfconf-query -c xsettings -p /Gtk/MonospaceFontName -n -t string -s "Nimbus Sans 10"
+xfconf-query -c xsettings -p /Gtk/MonospaceFontName -n -t string -s "Noto Sans Regular 10"
 xfconf-query -c xsettings -p /Gtk/CursorThemeName -n -t string -s "Dracula-cursors"
 
 xfconf-query -c xfwm4 -p /general/borderless_maximize -s "true"
@@ -114,6 +117,7 @@ xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Primary>Super_L" 
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>e" -n -t string -s "thunar"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>t" -n -t string -s "xfce4-terminal"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>b" -n -t string -s "chromium --incognito google.co.uk"
+makedir -p /home/$USER_NAME/.config/parcellite
 sudo cp -f $REPO_DIR/configs/parcelliterc /home/$USER_NAME/.config/parcellite/
 
 # power management and screensaver
@@ -258,8 +262,8 @@ sudo mkdir -p /home/$USER_NAME/.config/gtk-3.0
 sudo bash -c 'echo ".thunar toolbar image {-gtk-icon-style: regular;}" >> /home/$USER_NAME/.config/gtk-3.0/gtk.css'
 
 # Thunar right click menu addons
-bash -c 'echo '\''(gtk_accel_path "<Actions>/ThunarWindow/switch-next-tab" "<Primary>Tab")'\'' >> /home/zaib/.config/Thunar/accels.scm'
 mkdir -p /home/$USER_NAME/.config/Thunar
+bash -c 'echo '\''(gtk_accel_path "<Actions>/ThunarWindow/switch-next-tab" "<Primary>Tab")'\'' >> /home/zaib/.config/Thunar/accels.scm'
 sudo rm -f /home/$USER_NAME/.config/Thunar/uca.xml
 cat <<EOT >> /home/$USER_NAME/.config/Thunar/uca.xml
 <?xml version="1.0" encoding="UTF-8"?>
