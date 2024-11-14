@@ -48,8 +48,8 @@ sh driverInstall.sh
 
 if [ $dM != "lxdm" ]; then
     echo "Set nvidia as default GPU"
-    yay -S envycontrol --noconfirm --noremovemake --noanswerclean --noanswerdiff
+    yay -S envycontrol --noconfirm --removemake --noanswerclean --noanswerdiff
     sudo envycontrol -s nvidia --dm $dM
 fi
 
-sudo reboot now
+sudo systemctl start $dm
