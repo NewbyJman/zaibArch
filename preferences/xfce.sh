@@ -26,15 +26,17 @@ sudo rm -r gtk
 yay -S dracula-gtk-theme --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 
 echo "Adding icons"
+sudo pacman -S papirus-icon-theme --noconfirm --needed
 yay -S papirus-folders-git --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 papirus-folders -C violet --theme Papirus
 papirus-folders -C violet --theme Papirus-Dark
 sudo pacman -S python-cairosvg --noconfirm --needed
 sudo python3 ~/zaibArch/iconSetter/icons.py
+sudo rm -r /usr/share/icons/Papirus-Light
 
 # Configure global theme, cursor, icons
 xfconf-query -c xsettings -p /Net/ThemeName -n -t string -s "Dracula"
-xfconf-query -c xsettings -p /Net/IconThemeName -n -t string -s "zaib-icons"
+xfconf-query -c xsettings -p /Net/IconThemeName -n -t string -s "Papirus-Dark"
 xfconf-query -c xsettings -p /Gtk/FontName -n -t string -s "System-ui 10"
 xfconf-query -c xsettings -p /Gtk/MonospaceFontName -n -t string -s "Nimbus Sans 10"
 xfconf-query -c xsettings -p /Gtk/CursorThemeName -n -t string -s "Dracula-cursors"
@@ -330,7 +332,6 @@ xfconf-query -c xfce4-terminal -p /tab-activity-color -n -t string -s "1c1c7171d
 cd ~/zaibArch
 git clone https://github.com/dracula/mousepad.git
 mkdir -p ~/.local/share/gtksourceview-3.0/styles
-sudo rm -rfv ~/.local/share/gtksourceview-3.0/styles/*
 cp -f ~/zaibArch/mousepad/dracula.xml ~/.local/share/gtksourceview-3.0/styles
 
 gsettings set org.xfce.mousepad.preferences.view color-scheme 'dracula'
