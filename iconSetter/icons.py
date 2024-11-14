@@ -1,7 +1,6 @@
 import os, glob, sys, codecs, cairosvg
 
-working_path = "/home/zaib/Downloads/Papirus"
-oldColour="#ffffff"
+pFolders = ["Papirus", "Papirus-Dark"]
 newColour="#7e57c2"
 svgFolders = ["devices", "status", "actions", "places", "apps", "categories", "emblems", "mimetypes", "panel"]
 fileManagers = ["system-file-manager.svg", "dde-file-manager.svg", "org.xfce.filemanager.svg", "xfce-filemanager.svg"]
@@ -18,12 +17,12 @@ def fileManager():
 					cfile = f"{cdir}/{subFolder}/{file}"
 					if file in fileManagers:
 						print(cfile)
-						os.system(f"cp -f /home/zaib/Downloads/folder.svg /home/zaib/Downloads/{file}")
-						os.system(f"cp -f /home/zaib/Downloads/{file} {cfile}")
+						os.system(f"cp -f ~/zaib/zaibArch/iconSetter/folder.svg ~/zaib/zaibArch/iconSetter/{file}")
+						os.system(f"cp -f ~/zaib/zaibArch/iconSetter/{file} {cfile}")
 					elif file in fileManagerIco:
 						print(cfile)
-						os.system(f"cp -f /home/zaib/Downloads/folder2.svg /home/zaib/Downloads/{file}")
-						os.system(f"cp -f /home/zaib/Downloads/{file} {cfile}")
+						os.system(f"cp -f ~/zaib/zaibArch/iconSetter/folder2.svg ~/zaib/zaibArch/iconSetter/{file}")
+						os.system(f"sudo cp -f ~/zaib/zaibArch/iconSetter/{file} {cfile}")
 
 def svgRecolor(svgFolder):
 	for folder in os.listdir(working_path):
@@ -42,7 +41,6 @@ def svgRecolor(svgFolder):
 					newColor = color.replace(f"fill:{oldColour}", f"fill:{newColour}")
 					cairosvg.svg2svg(bytestring=newColor, write_to=cfile)
 
-
 def delFolderColours():
 	folder_colors = ["adwaita", "black", "blue", "bluegrey", "breeze", "brown", "carmine", "cyan", "darkcyan", "deeporange", "green", "grey", "indigo", "magenta", "nordic", "orange", "palebrown", "paleorange", "pink", "red", "teal", "white", "yellow", "yaru"]
 	for folder in os.listdir(working_path):
@@ -55,29 +53,16 @@ def delFolderColours():
 						print(f"deleting: {color}")
 						os.remove(f"{cdir}/{file}")
 
-fileManager()
-#for svgFolder in svgFolders:
-#	svgRecolor(svgFolder)
-#delFolderColours()
+for pFolder in pFolders:
+	working_path = f"/usr/share/icons/{pFolder}"
 
+	oldColour="#dfdfdf"
+	for svgFolder in svgFolders:
+		svgRecolor(svgFolder)
 
+	oldColour="#444444"
+	for svgFolder in svgFolders:
+		svgRecolor(svgFolder)
 
-def svgChecker(filepath):
-	with codecs.open(filepath, encoding='utf-8', errors='ignore') as f:
-		color = f.read()
-	print(color)
-
-#svgChecker("/home/zaib/Downloads/Papirus-Dark/symbolic/mimetypes/x-office-address-book-symbolic.svg")
-
-
-
-
-
-
-
-
-
-
-
-
-
+	fileManager()
+	delFolderColours()
