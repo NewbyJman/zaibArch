@@ -6,7 +6,6 @@ sudo cp -f ~/zaibArch/media/* ~/.local/share/gitMedia/
 
 # Configure SDDM
 echo "Downloading sddm theme"
-cd /usr/share/sddm/themes
 sudo rm -r /usr/share/sddm/themes/*
 sudo bash -c 'echo "[Theme]" >> /usr/lib/sddm/sddm.conf.d/sddm.conf'
 sudo bash -c 'echo "Current=zaib-purple" >> /usr/lib/sddm/sddm.conf.d/sddm.conf'
@@ -14,7 +13,7 @@ sudo bash -c 'sed -i "s/^Current=.*/Current=zaib-purple/" /lib/sddm/sddm.conf.d/
 sudo bash -c 'sed -i "s/^CursorTheme=.*/CursorTheme=Dracula-cursors/" /lib/sddm/sddm.conf.d/default.conf'
 sudo cp ~/.local/share/gitMedia/gintoki.png /usr/share/sddm/faces/zaib.face.icon
 sudo cp ~/.local/share/gitMedia/gintoki.png ~/.face
-sudo cp -f ~/zaibArch/sddm/zaib-purple zaib-purple
+sudo cp -f ~/zaibArch/sddm/zaib-purple /usr/share/sddm/themes/zaib-purple
 
 # Download global theme, cursors, icons
 echo "Downloading Dracula-purple kde theme"
@@ -24,14 +23,14 @@ sudo git clone https://github.com/dracula/gtk.git
 sudo mv -f gtk/kde/cursors/Dracula-cursors /usr/share/icons
 sudo rm -r gtk
 
-yay -S dracula-gtk-theme --noconfirm --removemake --noanswerclean --noanswerdiff
+yay -S dracula-gtk-theme --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 
 echo "Adding icons"
-sudo echo ".thunar toolbar image {-gtk-icon-style: regular;}" >> ~/.config/gtk-3.0/gtk.css
-yay -S gdown --noconfirm --removemake --noanswerclean --noanswerdiff
-cd ~/zaibArch
-gdown https://drive.google.com/file/d/1IkBQyfPK6dnkeWFsOGpcEYXDDKaJjyzD/view?usp=sharing
-sudo tar -xvzf ~/zaibArch/configs/zaib-icons.tar.gz /usr/share/icons/
+yay -S papirus-folders-git --noconfirm --removemake --noanswerclean --noanswerdiff --needed
+papirus-folders -C violet --theme Papirus
+papirus-folders -C violet --theme Papirus-Dark
+sudo pacman -S python-cairosvg --noconfirm --needed
+sudo python3 ~/zaibArch/iconSetter/icons.py
 
 # Configure global theme, cursor, icons
 xfconf-query -c xsettings -p /Net/ThemeName -n -t string -s "Dracula"
@@ -97,43 +96,6 @@ inactiveIndicatorStyle=1
 forceIconSize=true
 iconSize=32
 keyComboActive=true
-EOT
-
-# Thunar right click menu addons
-mkdir -p ~/.config/Thunar
-sudo rm -f ~/.config/Thunar/uca.xml
-cat <<EOT >> ~/.config/Thunar/uca.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<actions>
-<action>
-    <icon>object-locked</icon>
-    <name>Open as Root</name>
-    <submenu></submenu>
-    <unique-id>1713022049984740-1</unique-id>
-    <command>pkexec thunar %f</command>
-    <description>Opens directory as root</description>
-    <range>*</range>
-    <patterns>*</patterns>
-    <directories/>
-    <audio-files/>
-    <image-files/>
-    <other-files/>
-    <text-files/>
-    <video-files/>
-</action>
-<action>
-    <icon>utilities-terminal</icon>
-    <name>Open Terminal Here</name>
-    <submenu></submenu>
-    <unique-id>1713020166163568-1</unique-id>
-    <command>exo-open --working-directory %f --launch TerminalEmulator</command>
-    <description>Opens terminal in current directory</description>
-    <range></range>
-    <patterns>*</patterns>
-    <startup-notify/>
-    <directories/>
-</action>
-</actions>
 EOT
 
 # Keymap mapping
@@ -289,6 +251,46 @@ cat <<EOT >> $XML_LOCATION/thunar-volman.xml
 </channel>
 EOT
 
+sudo mkdir -p ~/.config/gtk-3.0
+sudo bash -c 'echo ".thunar toolbar image {-gtk-icon-style: regular;}" >> ~/.config/gtk-3.0/gtk.css'
+
+# Thunar right click menu addons
+mkdir -p ~/.config/Thunar
+sudo rm -f ~/.config/Thunar/uca.xml
+cat <<EOT >> ~/.config/Thunar/uca.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+    <icon>object-locked</icon>
+    <name>Open as Root</name>
+    <submenu></submenu>
+    <unique-id>1713022049984740-1</unique-id>
+    <command>pkexec thunar %f</command>
+    <description>Opens directory as root</description>
+    <range>*</range>
+    <patterns>*</patterns>
+    <directories/>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+</action>
+<action>
+    <icon>utilities-terminal</icon>
+    <name>Open Terminal Here</name>
+    <submenu></submenu>
+    <unique-id>1713020166163568-1</unique-id>
+    <command>exo-open --working-directory %f --launch TerminalEmulator</command>
+    <description>Opens terminal in current directory</description>
+    <range></range>
+    <patterns>*</patterns>
+    <startup-notify/>
+    <directories/>
+</action>
+</actions>
+EOT
+
 # Mouse and touchpad
 sudo rm -f $XML_LOCATION/pointers.xml
 cat <<EOT >> $XML_LOCATION/pointers.xml
@@ -328,7 +330,7 @@ xfconf-query -c xfce4-terminal -p /tab-activity-color -n -t string -s "1c1c7171d
 cd ~/zaibArch
 git clone https://github.com/dracula/mousepad.git
 mkdir -p ~/.local/share/gtksourceview-3.0/styles
-sudo rm -r ~/.local/share/gtksourceview-3.0/styles/*
+sudo rm -rfv ~/.local/share/gtksourceview-3.0/styles/*
 cp -f ~/zaibArch/mousepad/dracula.xml ~/.local/share/gtksourceview-3.0/styles
 
 gsettings set org.xfce.mousepad.preferences.view color-scheme 'dracula'
