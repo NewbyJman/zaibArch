@@ -1,5 +1,6 @@
 import os, glob, sys, codecs, cairosvg
 
+iconsPyDir = "/home/zaib/zaibArch/iconSetter"
 pFolders = ["Papirus", "Papirus-Dark"]
 newColour="#7e57c2"
 svgFolders = ["devices", "status", "actions", "places", "apps", "categories", "emblems", "mimetypes", "panel"]
@@ -17,12 +18,12 @@ def fileManager():
 					cfile = f"{cdir}/{subFolder}/{file}"
 					if file in fileManagers:
 						print(cfile)
-						os.system(f"cp -f ~/zaib/zaibArch/iconSetter/folder.svg ~/zaib/zaibArch/iconSetter/{file}")
-						os.system(f"cp -f ~/zaib/zaibArch/iconSetter/{file} {cfile}")
+						os.system(f"cp -f {iconsPyDir}/folder.svg {iconsPyDir}/{file}")
+						os.system(f"cp -f {iconsPyDir}/{file} {cfile}")
 					elif file in fileManagerIco:
 						print(cfile)
-						os.system(f"cp -f ~/zaib/zaibArch/iconSetter/folder2.svg ~/zaib/zaibArch/iconSetter/{file}")
-						os.system(f"sudo cp -f ~/zaib/zaibArch/iconSetter/{file} {cfile}")
+						os.system(f"cp -f {iconsPyDir}/folder2.svg {iconsPyDir}/{file}")
+						os.system(f"sudo cp -f {iconsPyDir}/{file} {cfile}")
 
 def svgRecolor(svgFolder):
 	for folder in os.listdir(working_path):
