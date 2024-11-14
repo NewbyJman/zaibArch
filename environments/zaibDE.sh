@@ -11,6 +11,7 @@ PKGS=(
     # Desktop utilities
     "lxtask"
     "xarchiver"
+    "noto-fonts"
     
     # Pipewire audio
     "pipewire pipewire-alsa pipewire-media-session pipewire-pulse"
@@ -43,5 +44,5 @@ YPKGS=(
 )
 
 for PKG in "${YPKGS[@]}"; do
-    yay -S $PKG --noconfirm --noremovemake --noanswerclean --noanswerdiff
+    yay -S $PKG --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 done
