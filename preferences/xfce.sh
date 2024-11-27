@@ -117,7 +117,7 @@ xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Primary>Super_L" 
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>e" -n -t string -s "thunar"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>t" -n -t string -s "xfce4-terminal"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>b" -n -t string -s "chromium --incognito google.co.uk"
-makedir -p /home/$USER_NAME/.config/parcellite
+mkdir -p /home/$USER_NAME/.config/parcellite
 sudo cp -f $REPO_DIR/configs/parcelliterc /home/$USER_NAME/.config/parcellite/
 
 # power management and screensaver
