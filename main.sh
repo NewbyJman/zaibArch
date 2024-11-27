@@ -88,6 +88,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "Enabling multilib"
 sed -i "s/^#VerbosePkgLists.*/VerbosePkgLists/" /etc/pacman.conf
+sed -i "s/^#Color.*/Color/" /etc/pacman.conf
 sed -i "s/^#ParallelDownloads = .*/ParallelDownloads = 5/" /etc/pacman.conf
 sed -i "/^ParallelDownloads = 5.*/a ILoveCandy" /etc/pacman.conf
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
