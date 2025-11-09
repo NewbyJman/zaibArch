@@ -117,6 +117,13 @@ xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Primary>Super_L" 
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>e" -n -t string -s "thunar"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>t" -n -t string -s "xfce4-terminal"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>b" -n -t string -s "chromium --incognito google.co.uk"
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Alt>l" -n -t string -s "tile_right_key"xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Alt>h" -n -t string -s "tile_left_key"
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Alt>k" -n -t string -s "tile_up_key"
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Alt>j" -n -t string -s "tile_down_key"
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Shift>l" -n -t string -s "tile_up_right_key"
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Shift>h" -n -t string -s "tile_up_left_key"
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Primary>l" -n -t string -s "tile_down_right_key"
+xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Primary>h" -n -t string -s "tile_down_left_key"
 mkdir -p /home/$USER_NAME/.config/parcellite
 sudo cp -f $REPO_DIR/configs/parcelliterc /home/$USER_NAME/.config/parcellite/
 
