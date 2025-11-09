@@ -1,25 +1,3 @@
-echo "Select desktop type:"
-echo "1. Custom"
-echo "2. Not Custom"
-read dType
-
-if [ $dType == 2 ]; then
-    echo "Select environment:"
-    echo "1. Plasma full"
-    echo "2. Plasma base"
-    echo "3. XFCE full"
-    echo "4. Cinammon"
-    echo "5. Openbox"
-    read dE
-    if [ $de == 4 ]; then
-        dM="lightdm"
-    elif [ $de == 5 ]; then
-        dM="lxdm"
-    else
-        dM="sddm"
-    fi
-fi
-
 sudo reflector --protocol https --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 echo "Building yay"
 sudo pacman -S "go" --noconfirm --needed
@@ -29,14 +7,56 @@ cd ~/yay
 makepkg -si --noconfirm
 cd ~/
 
-if [ $dType == 1 ]; then
-    sh ~/zaibArch/environments/zaibDE.sh
-    dM="sddm"
-elif [ $dType == 2 ]; then
-    sh ~/zaibArch/environments.sh $dM $dE
-fi
+PKGS=(
+    "sddm qt5-quickcontrols2 qt5-graphicaleffects"
 
-sudo systemctl enable $dM bluetooth.service NetworkManager.service ntpd
+    # XFCE components
+    "xfwm4 xfce4-session xfce4-settings xfce4-screensaver xfdesktop thunar-volman thunar-archive-plugin catfish tumbler thunar-media-tags-plugin gvfs"
+    "xfce4-terminal"
+    "xfce4-xfconf"
+    "xfce4-panel"
+    "xfce4-power-manager xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin"    
+
+    # Desktop utilities
+    "lxtask"
+    "xarchiver"
+    "noto-fonts"
+    
+    # Pipewire audio
+    "pipewire pipewire-alsa pipewire-media-session pipewire-pulse"
+
+    # Panel plugins
+    "network-manager-applet"
+    "blueman"
+    "pavucontrol"
+
+    # Extras
+    "flameshot"
+    "parcellite"
+    "vlc"
+    "chromium"
+    "viewnior"
+    "gimp"
+    "mousepad"
+    "cheese"
+    "qbittorrent"
+)
+
+for PKG in "${PKGS[@]}"; do
+    sudo pacman -S $PKG --noconfirm --needed
+done
+
+YPKGS=(
+    "mugshot"
+    "xfce4-docklike-plugin"
+    "7-zip"
+)
+
+for PKG in "${YPKGS[@]}"; do
+    yay -S $PKG --noconfirm --removemake --noanswerclean --noanswerdiff --needed
+done
+
+sudo systemctl enable sddm bluetooth.service NetworkManager.service ntpd
 sudo ntpd -u ntp:ntp
 sudo ntpd -qg
 sudo hwclock --systohc
@@ -44,12 +64,10 @@ sudo systemctl --user --now disable pulseaudio.service pulseaudio.socket
 sudo systemctl --user mask pulseaudio
 sudo systemctl --user --now enable pipewire pipewire-pulse pipewire-media-session
 
-sh driverInstall.sh
+//sh driverInstall.sh
 
-if [ $dM != "lxdm" ]; then
-    echo "Set nvidia as default GPU"
-    yay -S envycontrol --noconfirm --removemake --noanswerclean --noanswerdiff
-    sudo envycontrol -s nvidia --dm $dM
-fi
+echo "Set nvidia as default GPU"
+yay -S envycontrol --noconfirm --removemake --noanswerclean --noanswerdiff
+sudo envycontrol -s nvidia --dm sddm
 
-sudo systemctl start $dm
+sudo systemctl start sddm
