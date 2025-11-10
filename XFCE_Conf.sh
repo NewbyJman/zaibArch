@@ -12,8 +12,7 @@ echo "Downloading sddm theme"
 sudo rm -r /usr/share/sddm/themes/*
 sudo bash -c 'echo "[Theme]" >> /usr/lib/sddm/sddm.conf.d/sddm.conf'
 sudo bash -c 'echo "Current=zaib-purple" >> /usr/lib/sddm/sddm.conf.d/sddm.conf'
-sudo bash -c 'sed -i "s/^Current=.*/Current=zaib-purple/" /lib/sddm/sddm.conf.d/default.conf'
-sudo bash -c 'sed -i "s/^CursorTheme=.*/CursorTheme=Dracula-cursors/" /lib/sddm/sddm.conf.d/default.conf'
+sudo bash -c 'echo "CursorTheme=Dracula-cursors" >> /usr/lib/sddm/sddm.conf.d/sddm.conf'
 sudo cp /home/$USER_NAME/.local/share/gitMedia/gintoki.png /usr/share/sddm/faces/$USER_NAME.face.icon
 sudo cp /home/$USER_NAME/.local/share/gitMedia/gintoki.png /home/$USER_NAME/.face
 sudo mkdir -p /usr/share/sddm/themes
