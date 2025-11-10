@@ -58,6 +58,12 @@ Item {
             hoverEnabled: true
             text: "Login!!"
 
+	    SequentialAnimation on scale {    loops: Animation.Infinite
+    		NumberAnimation { from: 1.0; to: 1.05; duration: 1000; easing.type: Easing.InOutSine }
+		NumberAnimation { from: 1.05; to: 1.0; duration: 1000; easing.type: Easing.InOutSine }
+    		running: loginButton.enabled
+	    }
+
             contentItem: Text {
                 id: buttonText
 

@@ -16,9 +16,12 @@ Column {
         font.bold: config.DateIsBold == "true" ? true : false
         color: config.DateColor
                 
-        function updateDate() {
-            text = new Date().toLocaleDateString(Qt.locale(), config.DateFormat)
-        }
+	function updateDate() {
+	    var now = new Date()
+	    var offsetMinutes = now.getTimezoneOffset() // negative if ahead of UTC
+	    var local = new Date(now.getTime() - offsetMinutes * 60 * 1000)
+	    dateLabel.text = local.toLocaleDateString(Qt.locale(), config.DateFormat)
+	}
     }
 
     Text {
@@ -33,9 +36,12 @@ Column {
         font.bold: config.TimeIsBold == "true" ? true : false
         color: config.TimeColor
 
-        function updateTime() {
-            text = new Date().toLocaleTimeString(Qt.locale(), config.TimeFormat)
-        }
+	function updateTime() {
+	    var now = new Date()
+	    var offsetMinutes = now.getTimezoneOffset()
+	    var local = new Date(now.getTime() - offsetMinutes * 60 * 1000)
+	    timeLabel.text = local.toLocaleTimeString(Qt.locale(), config.TimeFormat)
+	}
     }
 
     Timer {
