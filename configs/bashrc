@@ -2,12 +2,63 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don't do annything
-[[ $- != *i* ]] & return
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+export HISTFILESIZE=10000
+export HISTSIZE=500
+export HISTTIMEFORMAT="< %d-%m-%y %I:%M%P > " 
+export HISTCONTROL=erasedups:ignoredups:ignorespace
+shopt -s checkwinsize
+shopt -s histappend
+PROMPT_COMMAND='history -a'
 
-PS1='\\\n\[\e[38;5;54m\]╭─\[\e[97;48;5;54m\] \u\[\e[22m\] 🟑 \[\e[3m\]\h\[\e[23;1m\] \[\e[0;38;5;54;48;5;92m\]\[\e[97m\] \[\e[2m\]\@\[\e[22m\] \[\e[38;5;92;48;5;129m\]\[\e[97m\] \w\[\e[0;38;5;129m\]\[\e[0m\]\n\[\e[38;5;54m\]╰➤ \[\e[38;5;129;1m\]\$ \[\e[0m\]'
+blk='\[\033[01;30m\]'   # Black
+red='\[\033[01;31m\]'   # Red
+grn='\[\033[01;32m\]'   # Green
+ylw='\[\033[01;33m\]'   # Yellow
+blu='\[\033[01;34m\]'   # Blue
+pur='\[\033[01;35m\]'   # Purple
+cyn='\[\033[01;36m\]'   # Cyan
+wht='\[\033[01;37m\]'   # White
+clr='\[\033[00m\]'      # Reset
 
-#PS1='\n\[\e[97;48;5;54m\] \u@\[\e[3m\]\h\[\e[23m\] \[\e[48;5;129m\]٭\[\e[48;5;54m\] \w \n\[\e[0;38;5;129m\]\$ \[\e[0m\]'
+alias remove='gio trash'
+alias rename="gio rename"
+alias cls='clear'
+alias date='date "+%a %d-%b-%y %I:%M%P"'
+alias ls='ls -aF --color=always'
+alias dir='dir --color=always'
+alias vdir='vdir --color=always'
+alias mkdir='mkdir -pv'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -Iv'
+alias ping='ping -c 5'
+alias path='echo -e ${PATH//:/\\n}'
+alias grep='grep --color=always'
+alias cat='bat'
+alias vim='nvim'
+alias vi='vim'
+alias svim='sudo nvim'
+
+alias pac='sudo pacman -S --needed --noconfirm'
+alias pac-get='sudo pacman -S --needed'
+alias pac-upd='sudo pacman -Sy'
+alias pac-upg='sudo pacman -Su'
+alias pac-clean='pacman -Qtdq | sudo pacman -Rns -'
+alias pac-del='sudo pacman -R'
+alias yays='yay -S --noconfirm --removemake --noanswerclean --noanswerdiff --needed'
+
+case "$TERM" in
+	xterm-color|*-256color) color_prompt=yes;;
+esac
+
+if [ "$color_prompt" = yes ]; then
+    PS1=${red}'\u@\h'${clr}':'${blu}'\w'${clr}'\$ '
+else
+    PS1='\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+#PS1='[\u@\h \W]\$ '
