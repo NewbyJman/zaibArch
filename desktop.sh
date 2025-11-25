@@ -18,14 +18,11 @@ PKGS=(
     "xfce4-power-manager xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin"    
 
     # Desktop utilities
-    "nemo nemo-fileroller"
+    "nemo"
+    "xarchiver"
     "lxtask"
-    "noto-fonts"
-    "noto-fonts-emoji"
-    "noto-fonts-arabic"
-    "adobe-source-han-sans-jp-fonts"
-    "adobe-source-han-sans-kr-fonts"
-    "adobe-source-han-sans-cn-fonts"
+    "noto-fonts noto-fonts-emoji noto-fonts-arabic"
+    "adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-cn-fonts"
     "ttf-nerd-fonts-symbols-mono"
     "xsel"
     
