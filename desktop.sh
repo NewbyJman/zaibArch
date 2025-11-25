@@ -11,15 +11,16 @@ PKGS=(
     "sddm qt5-quickcontrols2 qt5-graphicaleffects"
 
     # XFCE components
-    "xfwm4 xfce4-session xfce4-settings xfce4-screensaver xfdesktop thunar-volman thunar-archive-plugin tumbler thunar-media-tags-plugin gvfs"
+    "xfwm4 xfce4-session xfce4-settings xfce4-screensaver gvfs"
     "xfce4-terminal"
     "xfce4-xfconf"
     "xfce4-panel"
     "xfce4-power-manager xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin"    
 
     # Desktop utilities
+    "nemo nemo-fileroller"
+    "nitrogen"
     "lxtask"
-    "xarchiver"
     "noto-fonts"
     "noto-fonts-emoji"
     "noto-fonts-arabic"
