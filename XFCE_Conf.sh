@@ -63,34 +63,6 @@ xfconf-query -c xfwm4 -p /general/wrap_workspaces -s false
 xfconf-query -c xfwm4 -p /general/workspace_count -s 1
 xfconf-query -c xfwm4 -p /general/wrap_resistance -s 10
 
-# Configure desktop
-sudo rm -f $XML_LOCATION/xfce4-desktop.xml
-cat <<EOT >> $XML_LOCATION/xfce4-desktop.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<channel name="xfce4-desktop" version="1.0">
-<property name="backdrop" type="empty">
-    <property name="screen0" type="empty">
-    <property name="monitor0" type="empty">
-    <property name="image-path" type="string" value="/home/zaib/.local/share/gitMedia/wallpaper.png"/>
-    <property name="image-show" type="bool" value="true"/>
-    <property name="image-style" type="int" value="5"/>
-    </property>
-    </property>
-</property>
-<property name="desktop-icons" type="empty">
-    <property name="show-hidden-files" type="bool" value="false"/>
-    <property name="show-removable" type="bool" value="true"/>
-    <property name="show-home" type="bool" value="true"/>
-    <property name="show-trash" type="bool" value="false"/>
-    <property name="show-filesystem" type="bool" value="false"/>
-    <property name="primary" type="bool" value="true"/>
-</property>
-<property name="desktop-menu" type="empty">
-    <property name="show" type="bool" value="false"/>
-</property>
-</channel>
-EOT
-
 # Docklike Taskbar
 mkdir -p /home/$USER_NAME/.config/xfce4/panel
 cat <<EOT >> /home/$USER_NAME/.config/xfce4/panel/docklike-2.rc
@@ -113,9 +85,9 @@ xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>p" -n -t st
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Primary><Shift>Escape" -n -t string -s "lxtask"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>l" -n -t string -s "xfce4-session-logout"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Primary>Super_L" -n -t string -s "xfce4-popup-whiskermenu"
-xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>e" -n -t string -s "thunar"
+xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>e" -n -t string -s "nemo"
 xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>t" -n -t string -s "xfce4-terminal"
-xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>b" -n -t string -s "chromium --incognito google.co.uk"
+xfconf-query -c xfce4-keyboard-shortcuts -p /commands/custom/"<Super>b" -n -t string -s "waterfox --private-window google.co.uk"
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Alt>l" -n -t string -s "tile_right_key"xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Alt>h" -n -t string -s "tile_left_key"
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Alt>k" -n -t string -s "tile_up_key"
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Alt>j" -n -t string -s "tile_down_key"
@@ -219,90 +191,6 @@ cat <<EOT >> $XML_LOCATION/xfce4-notifyd.xml
         <property name="log-only-today" type="bool" value="true"/>
     </property>
 </channel>
-EOT
-
-# Thunar
-echo "Thunar"
-sudo rm -f $XML_LOCATION/xfce4-thunar.xml
-cat <<EOT >> $XML_LOCATION/xfce4-thunar.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<channel name="thunar" version="1.0">
-    <property name="last-view" type="string" value="ThunarIconView"/>
-    <property name="last-icon-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_220_PERCENT"/>
-    <property name="last-window-maximized" type="bool" value="true"/>
-    <property name="last-separator-position" type="int" value="170"/>
-    <property name="last-location-bar" type="string" value="ThunarLocationButtons"/>
-    <property name="last-image-preview-visible" type="bool" value="false"/>
-    <property name="misc-single-click" type="bool" value="false"/>
-    <property name="misc-open-new-window-as-tab" type="bool" value="true"/>
-    <property name="misc-thumbnail-mode" type="string" value="THUNAR_THUMBNAIL_MODE_ALWAYS"/>
-    <property name="misc-middle-click-in-tab" type="bool" value="true"/>
-    <property name="misc-full-path-in-tab-title" type="bool" value="true"/>
-    <property name="misc-recursive-permissions" type="string" value="THUNAR_RECURSIVE_PERMISSIONS_ASK"/>
-    <property name="misc-recursive-search" type="string" value="THUNAR_RECURSIVE_SEARCH_NEVER"/>
-    <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_40_PERCENT"/>
-    <property name="last-show-hidden" type="bool" value="true"/>
-    <property name="last-menubar-visible" type="bool" value="false"/>
-    <property name="last-toolbar-item-order" type="string" value="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18"/>
-    <property name="last-toolbar-visible-buttons" type="string" value="0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0"/>
-</channel>
-EOT
-sudo rm -f $XML_LOCATION/thunar-volman.xml
-cat <<EOT >> $XML_LOCATION/thunar-volman.xml
-<?xml version="1.0" encoding="UTF-8"?>
-
-<channel name="thunar-volman" version="1.0">
-  <property name="automount-drives" type="empty">
-    <property name="enabled" type="bool" value="true"/>
-  </property>
-  <property name="automount-media" type="empty">
-    <property name="enabled" type="bool" value="true"/>
-  </property>
-  <property name="autobrowse" type="empty">
-    <property name="enabled" type="bool" value="true"/>
-  </property>
-</channel>
-EOT
-
-sudo mkdir -p /home/$USER_NAME/.config/gtk-3.0
-sudo bash -c 'echo ".thunar toolbar image {-gtk-icon-style: regular;}" >> /home/$USER_NAME/.config/gtk-3.0/gtk.css'
-
-# Thunar right click menu addons
-mkdir -p /home/$USER_NAME/.config/Thunar
-bash -c 'echo '\''(gtk_accel_path "<Actions>/ThunarWindow/switch-next-tab" "<Primary>Tab")'\'' >> /home/zaib/.config/Thunar/accels.scm'
-sudo rm -f /home/$USER_NAME/.config/Thunar/uca.xml
-cat <<EOT >> /home/$USER_NAME/.config/Thunar/uca.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<actions>
-<action>
-    <icon>object-locked</icon>
-    <name>Open as Root</name>
-    <submenu></submenu>
-    <unique-id>1713022049984740-1</unique-id>
-    <command>pkexec thunar %f</command>
-    <description>Opens directory as root</description>
-    <range>*</range>
-    <patterns>*</patterns>
-    <directories/>
-    <audio-files/>
-    <image-files/>
-    <other-files/>
-    <text-files/>
-    <video-files/>
-</action>
-<action>
-    <icon>utilities-terminal</icon>
-    <name>Open Terminal Here</name>
-    <submenu></submenu>
-    <unique-id>1713020166163568-1</unique-id>
-    <command>exo-open --working-directory %f --launch TerminalEmulator</command>
-    <description>Opens terminal in current directory</description>
-    <range></range>
-    <patterns>*</patterns>
-    <startup-notify/>
-    <directories/>
-</action>
-</actions>
 EOT
 
 # Mouse and touchpad
