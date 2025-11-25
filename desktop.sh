@@ -11,7 +11,7 @@ PKGS=(
     "sddm qt5-quickcontrols2 qt5-graphicaleffects"
 
     # XFCE components
-    "xfwm4 xfce4-session xfce4-settings xfce4-screensaver xfdesktop thunar-volman thunar-archive-plugin catfish tumbler thunar-media-tags-plugin gvfs"
+    "xfwm4 xfce4-session xfce4-settings xfce4-screensaver xfdesktop thunar-volman thunar-archive-plugin tumbler thunar-media-tags-plugin gvfs"
     "xfce4-terminal"
     "xfce4-xfconf"
     "xfce4-panel"
@@ -50,6 +50,7 @@ YPKGS=(
     "mugshot"
     "xfce4-docklike-plugin"
     "7-zip"
+    "albert"
 )
 
 for PKG in "${YPKGS[@]}"; do
