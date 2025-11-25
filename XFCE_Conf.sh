@@ -113,8 +113,14 @@ cat <<EOT >> $XML_LOCATION/xfce4-screensaver.xml
     </property>
 </property>
 <property name="lock" type="empty">
-    <property name="enabled" type="bool" value="true"/>
+    <property name="enabled" type="bool" value="false"/>
     <property name="sleep-activation" type="bool" value="true"/>
+    <property name="saver-activation" type="empty">
+        <property name="delay" type="int" value="15"/>
+    </property/>
+    <property name="logout" type="empty">
+        <property name="enabled" type="bool" value="false"/>
+    </property/>
 </property>
 </channel>
 EOT
@@ -126,7 +132,7 @@ cat <<EOT >> $XML_LOCATION/xfce4-session.xml
 <channel name="xfce4-session" version="1.0">
 <property name="general" type="empty">
     <property name="AutoSave" type="bool" value="false"/>
-    <property name="SaveOnExit" type="bool" value="false"/>
+    <property name="SaveOnExit" type="bool" value="true"/>
     <property name="PromptOnLogout" type="bool" value="true"/>
 </property>
 <property name="shutdown" type="empty">
@@ -148,7 +154,7 @@ cat <<EOT >> $XML_LOCATION/xfce4-power-manager.xml
     <property name="brightness-store" type="bool" value="false"/>
     <property name="lock-screen-suspend-hibernate" type="bool" value="true"/>
     <property name="lid-action-on-ac" type="uint" value="1"/>
-    <property name="inactivity-on-ac" type="uint" value="30"/>
+    <property name="inactivity-on-ac" type="uint" value="0"/>
     <property name="dpms-on-ac-sleep" type="uint" value="0"/>
     <property name="blank-on-ac" type="int" value="0"/>
     <property name="brightness-switch-restore-on-exit" type="int" value="1"/>
@@ -174,6 +180,7 @@ cat <<EOT >> $XML_LOCATION/xfce4-power-manager.xml
     <property name="dpms-on-ac-off" type="uint" value="0"/>
     <property name="brightness-level-on-ac" type="uint" value="20"/>
     <property name="sleep-button-action" type="uint" value="0"/>
+    <property name="presentation-mode" type="bool" value="false"/>
 </property>
 </channel>
 EOT
@@ -240,6 +247,12 @@ gsettings set org.xfce.mousepad.preferences.view show-line-numbers true
 gsettings set org.xfce.mousepad.preferences.view tab-width 3
 gsettings set org.xfce.mousepad.preferences.window recent-menu-items 5
 
+# Neovim and tmux
+mkdir -p /home/$USER_NAME/.config/nvim
+sudo cp -f $REPO_DIR/configs/init.lua /home/$USER_NAME/.config/nvim/
+sudo cp -f $REPO_DIR/configs/tmux.conf /home/$USER_NAME/.tmux.conf
+
 # Import remaining conf files
 sudo cp -f $REPO_DIR/configs/xfce4-panel.xml $XML_LOCATION/
 sudo cp -f $REPO_DIR/configs/startup/* /etc/xdg/autostart/
+sudo cp -f $REPO_DIR/configs/bashrc /home/$USER_NAME/.bashrc
