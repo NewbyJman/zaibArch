@@ -21,6 +21,13 @@ PKGS=(
     "lxtask"
     "xarchiver"
     "noto-fonts"
+    "noto-fonts-emoji"
+    "noto-fonts-arabic"
+    "adobe-source-han-sans-jp-fonts"
+    "adobe-source-han-sans-kr-fonts"
+    "adobe-source-han-sans-cn-fonts"
+    "ttf-nerd-fonts-symbols-mono"
+    "xsel"
     
     # Pipewire audio
     "pipewire pipewire-alsa pipewire-media-session pipewire-pulse"
@@ -40,6 +47,7 @@ PKGS=(
     "mousepad"
     "cheese"
     "qbittorrent"
+    "kdenlive"
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -51,6 +59,9 @@ YPKGS=(
     "xfce4-docklike-plugin"
     "7-zip"
     "albert"
+    "onlyoffice-bin"
+    "immersed"
+    "waterfox-bin"
 )
 
 for PKG in "${YPKGS[@]}"; do
