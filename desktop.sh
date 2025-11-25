@@ -19,7 +19,6 @@ PKGS=(
 
     # Desktop utilities
     "nemo nemo-fileroller"
-    "nitrogen"
     "lxtask"
     "noto-fonts"
     "noto-fonts-emoji"
@@ -63,6 +62,7 @@ YPKGS=(
     "onlyoffice-bin"
     "immersed"
     "waterfox-bin"
+    "nitrogen"
 )
 
 for PKG in "${YPKGS[@]}"; do
