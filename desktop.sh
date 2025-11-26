@@ -18,10 +18,10 @@ PKGS=(
     "xfce4-power-manager xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin"    
 
     # Desktop utilities
-    "nemo"
+    "nemo nemo-preview nemo-fileroller"
     "xarchiver"
     "lxtask"
-    "noto-fonts noto-fonts-emoji noto-fonts-arabic"
+    "noto-fonts noto-fonts-emoji"
     "adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-cn-fonts"
     "ttf-nerd-fonts-symbols-mono"
     "xsel"
@@ -57,7 +57,6 @@ YPKGS=(
     "7-zip"
     "albert"
     "onlyoffice-bin"
-    "immersed"
     "waterfox-bin"
     "nitrogen"
 )
