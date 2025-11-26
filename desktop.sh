@@ -40,6 +40,7 @@ PKGS=(
     "vlc"
     "chromium"
     "viewnior"
+    "feh"
     "gimp"
     "mousepad"
     "cheese"
@@ -58,7 +59,6 @@ YPKGS=(
     "albert"
     "onlyoffice-bin"
     "waterfox-bin"
-    "nitrogen"
 )
 
 for PKG in "${YPKGS[@]}"; do
