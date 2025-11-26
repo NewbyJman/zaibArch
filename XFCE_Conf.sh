@@ -24,6 +24,7 @@ sudo mkdir -p Dracula
 sudo git clone https://github.com/dracula/gtk.git
 sudo mv -f gtk/kde/cursors/Dracula-cursors /usr/share/icons
 sudo rm -r gtk
+feh --bg-scale /home/$USER/.local/share/gitMedia/wallpaper.png
 
 yay -S dracula-gtk-theme --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 
@@ -239,7 +240,7 @@ xfconf-query -c xfce4-terminal -p /tab-activity-color -n -t string -s "1c1c7171d
 cd $REPO_DIR
 git clone https://github.com/dracula/mousepad.git
 sudo mkdir -p /home/$USER/.local/share/gtksourceview-4/styles
-cp -f $REPO_DIR/mousepad/dracula.xml /home/$USER/.local/share/gtksourceview-4/styles
+sudo cp -f $REPO_DIR/mousepad/dracula.xml /home/$USER/.local/share/gtksourceview-4/styles
 
 gsettings set org.xfce.mousepad.preferences.view color-scheme 'dracula'
 gsettings set org.xfce.mousepad.preferences.view font-name 'Source Code Pro Regular 12'
