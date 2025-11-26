@@ -1,6 +1,7 @@
 import os, glob, sys, codecs, cairosvg
 
-iconsPyDir = "/home/zaib/zaibArch/iconSetter"
+user = os.environ.get(USER)
+iconsPyDir = f"/home/{user}/zaibArch/iconSetter"
 pFolders = ["Papirus", "Papirus-Dark"]
 newColour="#7e57c2"
 svgFolders = ["devices", "status", "actions", "places", "apps", "categories", "emblems", "mimetypes", "panel"]
