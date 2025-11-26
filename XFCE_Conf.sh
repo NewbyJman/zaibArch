@@ -1,11 +1,10 @@
 XML_LOCATION=~/.config/xfce4/xfconf/xfce-perchannel-xml
-USER_NAME=zaib
-REPO_DIR=/home/$USER_NAME/zaibArch
+REPO_DIR=/home/$USER/zaibArch
 
 # Import media
 sudo mkdir -p $XML_LOCATION
-sudo mkdir -p /home/$USER_NAME/.local/share/gitMedia
-sudo cp -f $REPO_DIR/media/* /home/$USER_NAME/.local/share/gitMedia/
+sudo mkdir -p /home/$USER/.local/share/gitMedia
+sudo cp -f $REPO_DIR/media/* /home/$USER/.local/share/gitMedia/
 
 # Configure SDDM
 echo "Downloading sddm theme"
@@ -13,8 +12,8 @@ sudo rm -r /usr/share/sddm/themes/*
 sudo bash -c 'echo "[Theme]" >> /usr/lib/sddm/sddm.conf.d/sddm.conf'
 sudo bash -c 'echo "Current=zaib-purple" >> /usr/lib/sddm/sddm.conf.d/sddm.conf'
 sudo bash -c 'echo "CursorTheme=Dracula-cursors" >> /usr/lib/sddm/sddm.conf.d/sddm.conf'
-sudo cp /home/$USER_NAME/.local/share/gitMedia/gintoki.png /usr/share/sddm/faces/$USER_NAME.face.icon
-sudo cp /home/$USER_NAME/.local/share/gitMedia/gintoki.png /home/$USER_NAME/.face
+sudo cp /home/$USER/.local/share/gitMedia/gintoki.png /usr/share/sddm/faces/$USER.face.icon
+sudo cp /home/$USER/.local/share/gitMedia/gintoki.png /home/$USER/.face
 sudo mkdir -p /usr/share/sddm/themes
 sudo cp -f $REPO_DIR/sddm/zaib-purple /usr/share/sddm/themes/zaib-purple
 
@@ -29,7 +28,7 @@ sudo rm -r gtk
 yay -S dracula-gtk-theme --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 
 echo "Adding icons"
-sudo pacman -S papirus --noconfirm --needed
+sudo pacman -S papirus-icon-theme --noconfirm --needed
 yay -S papirus-folders-git --noconfirm --removemake --noanswerclean --noanswerdiff --needed
 papirus-folders -C violet --theme Papirus
 papirus-folders -C violet --theme Papirus-Dark
@@ -48,7 +47,7 @@ xfconf-query -c xfwm4 -p /general/borderless_maximize -s "true"
 xfconf-query -c xfwm4 -p /general/click_to_focus -s "true"
 xfconf-query -c xfwm4 -p /general/cycle_apps_only -s "false"
 xfconf-query -c xfwm4 -p /general/cycle_draw_frame -s "false"
-xfconf-query -c xfwm4 -p /general/cycle_raise -s "true"
+xfconf-query -c xfwm4 -p /general/cycle_raise -s "false"
 xfconf-query -c xfwm4 -p /general/cycle_hidden -s "true"
 xfconf-query -c xfwm4 -p /general/cycle_preview -s "true"
 xfconf-query -c xfwm4 -p /general/double_click_action -s "maximize"
@@ -64,8 +63,8 @@ xfconf-query -c xfwm4 -p /general/workspace_count -s 1
 xfconf-query -c xfwm4 -p /general/wrap_resistance -s 10
 
 # Docklike Taskbar
-mkdir -p /home/$USER_NAME/.config/xfce4/panel
-cat <<EOT >> /home/$USER_NAME/.config/xfce4/panel/docklike-2.rc
+sudo mkdir -p /home/$USER/.config/xfce4/panel
+cat <<EOT >> /home/$USER/.config/xfce4/panel/docklike-2.rc
 [user]
 showPreviews=true
 indicatorStyle=1
@@ -96,8 +95,8 @@ xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Shift>l" -n -
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Shift>h" -n -t string -s "tile_up_left_key"
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Primary>l" -n -t string -s "tile_down_right_key"
 xfconf-query -c xfce4-keyboard-shortcuts -p /xfwm4/custom/"<Super><Primary>h" -n -t string -s "tile_down_left_key"
-mkdir -p /home/$USER_NAME/.config/parcellite
-sudo cp -f $REPO_DIR/configs/parcelliterc /home/$USER_NAME/.config/parcellite/
+sudo mkdir -p /home/$USER/.config/parcellite
+sudo cp -f $REPO_DIR/configs/parcelliterc /home/$USER/.config/parcellite/
 
 # power management and screensaver
 echo "screensaver"
@@ -225,7 +224,7 @@ echo "terminal"
 xfconf-query -c xfce4-terminal -p /misc-cursor-shape -n -t string -s "TERMINAL_CURSOR_SHAPE_IBEAM"
 xfconf-query -c xfce4-terminal -p /misc-cursor-blinks -n -t bool -s true
 xfconf-query -c xfce4-terminal -p /font-use-system -n -t bool -s false
-xfconf-query -c xfce4-terminal -p /font-name -n -t string -s "Source Code Pro Medium 15"
+xfconf-query -c xfce4-terminal -p /font-name -n -t string -s "Monospace Regular Medium 15"
 xfconf-query -c xfce4-terminal -p /font-allow-bold -n -t bool -s true
 xfconf-query -c xfce4-terminal -p /background-mode -n -t string -s "TERMINAL_BACKGROUND_TRANSPARENT"
 xfconf-query -c xfce4-terminal -p /background-darkness -n -t double -s 0.9
@@ -239,8 +238,8 @@ xfconf-query -c xfce4-terminal -p /tab-activity-color -n -t string -s "1c1c7171d
 # Mousepad
 cd $REPO_DIR
 git clone https://github.com/dracula/mousepad.git
-mkdir -p /home/$USER_NAME/.local/share/gtksourceview-4/styles
-cp -f $REPO_DIR/mousepad/dracula.xml /home/$USER_NAME/.local/share/gtksourceview-4/styles
+sudo mkdir -p /home/$USER/.local/share/gtksourceview-4/styles
+cp -f $REPO_DIR/mousepad/dracula.xml /home/$USER/.local/share/gtksourceview-4/styles
 
 gsettings set org.xfce.mousepad.preferences.view color-scheme 'dracula'
 gsettings set org.xfce.mousepad.preferences.view font-name 'Source Code Pro Regular 12'
@@ -249,11 +248,11 @@ gsettings set org.xfce.mousepad.preferences.view tab-width 3
 gsettings set org.xfce.mousepad.preferences.window recent-menu-items 5
 
 # Neovim and tmux
-mkdir -p /home/$USER_NAME/.config/nvim
-sudo cp -f $REPO_DIR/configs/init.lua /home/$USER_NAME/.config/nvim/
-sudo cp -f $REPO_DIR/configs/tmux.conf /home/$USER_NAME/.tmux.conf
+sudo mkdir -p /home/$USER/.config/nvim
+sudo cp -f $REPO_DIR/configs/init.lua /home/$USER/.config/nvim/
+sudo cp -f $REPO_DIR/configs/tmux.conf /home/$USER/.tmux.conf
 
 # Import remaining conf files
 sudo cp -f $REPO_DIR/configs/xfce4-panel.xml $XML_LOCATION/
 sudo cp -f $REPO_DIR/configs/startup/* /etc/xdg/autostart/
-sudo cp -f $REPO_DIR/configs/bashrc /home/$USER_NAME/.bashrc
+sudo cp -f $REPO_DIR/configs/bashrc /home/$USER/.bashrc
