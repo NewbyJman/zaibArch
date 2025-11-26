@@ -27,7 +27,7 @@ PKGS=(
     "xsel"
     
     # Pipewire audio
-    "pipewire pipewire-alsa pipewire-media-session pipewire-pulse"
+    "pipewire pipewire-alsa wireplumber pipewire-pulse sof-firmware"
 
     # Panel plugins
     "network-manager-applet"
@@ -41,6 +41,7 @@ PKGS=(
     "chromium"
     "viewnior"
     "feh"
+    "bat fastfetch"
     "gimp"
     "mousepad"
     "cheese"
@@ -71,12 +72,10 @@ sudo ntpd -qg
 sudo hwclock --systohc
 sudo systemctl --user --now disable pulseaudio.service pulseaudio.socket
 sudo systemctl --user mask pulseaudio
-sudo systemctl --user --now enable pipewire pipewire-pulse pipewire-media-session
+sudo systemctl --user --now enable pipewire pipewire-pulse pipeware-alsa
 
 //sh driverInstall.sh
 
 echo "Set nvidia as default GPU"
 yay -S envycontrol --noconfirm --removemake --noanswerclean --noanswerdiff
 sudo envycontrol -s nvidia --dm sddm
-
-sudo systemctl start sddm
