@@ -38,17 +38,25 @@ alias ping='ping -c 5'
 alias path='echo -e ${PATH//:/\\n}'
 alias grep='grep --color=always'
 alias cat='bat'
+alias reboot='sudo reboot now'
+
 alias vim='nvim'
 alias vi='vim'
 alias svim='sudo nvim'
+alias set-bg='feh --bg-scale ~/.local/share/gitMedia/wallpaper.png'
+alias py='python'
 
 alias pac='sudo pacman -S --needed --noconfirm'
 alias pac-get='sudo pacman -S --needed'
 alias pac-upd='sudo pacman -Sy'
 alias pac-upg='sudo pacman -Su'
 alias pac-clean='pacman -Qtdq | sudo pacman -Rns -'
+alias cache-clean='sudo pacman -Sc && yay -Sc'
 alias pac-del='sudo pacman -R'
 alias yays='yay -S --noconfirm --removemake --noanswerclean --noanswerdiff --needed'
+
+alias gpui='sudo envycontrol -s integrated'
+alias gpud='sudo envycontrol -s nvidia'
 
 case "$TERM" in
 	xterm-color|*-256color) color_prompt=yes;;
@@ -62,3 +70,4 @@ fi
 unset color_prompt force_color_prompt
 
 #PS1='[\u@\h \W]\$ '
+
