@@ -12,7 +12,7 @@ PKGS=(
 
     # XFCE components
     "xfwm4 xfce4-session xfce4-settings xfce4-screensaver gvfs"
-    "xfce4-terminal"
+    "xfce4-terminal tmux"
     "xfce4-xfconf"
     "xfce4-panel"
     "xfce4-power-manager xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin"    
@@ -21,9 +21,9 @@ PKGS=(
     "nemo nemo-preview nemo-fileroller"
     "xarchiver"
     "lxtask"
-    "noto-fonts noto-fonts-emoji"
+    "noto-fonts noto-fonts-emoji ttf-nerd-fonts-symbols-mono"
     "adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-cn-fonts"
-    "ttf-nerd-fonts-symbols-mono"
+    "ttf-scheherazade-new"
     "xsel"
     
     # Pipewire audio
