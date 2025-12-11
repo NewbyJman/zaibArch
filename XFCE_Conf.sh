@@ -235,6 +235,7 @@ xfconf-query -c xfce4-terminal -p /title-mode -n -t string -s "TERMINAL_TITLE_HI
 xfconf-query -c xfce4-terminal -p /color-foreground -n -t string -s "#d2d25050ffff"
 xfconf-query -c xfce4-terminal -p /color-background -n -t string -s "#0b840068da7"
 xfconf-query -c xfce4-terminal -p /tab-activity-color -n -t string -s "1c1c7171d8d8"
+gsettings set org.cinnamon.desktop.default-applications.terminal exec xfce4-terminal
 
 # Mousepad
 cd $REPO_DIR
