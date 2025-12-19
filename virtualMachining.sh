@@ -2,6 +2,7 @@ sudo pacman -S qemu-full libvirt virt-manager virt-viewer edk2-ovmf dnsmasq ipta
 sudo systemctl enable --now libvirtd.service
 sudo systemctl status libvirtd.service
 sudo usermod -aG libvirt,kvm zaib
+sudo virsh net-autostart default
 
 ## WINDOWS 10
 # Download windows Virtio drivers ISO: https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers
