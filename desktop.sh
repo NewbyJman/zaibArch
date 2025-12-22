@@ -18,7 +18,7 @@ PKGS=(
     "xfce4-power-manager xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin"    
 
     # Desktop utilities
-    "nemo nemo-preview nemo-fileroller"
+    "nemo nemo-preview nemo-fileroller gvfs-mtp"
     "xarchiver"
     "lxtask"
     "noto-fonts noto-fonts-emoji ttf-nerd-fonts-symbols-mono"
