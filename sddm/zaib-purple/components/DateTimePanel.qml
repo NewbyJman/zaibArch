@@ -18,8 +18,7 @@ Column {
                 
 	function updateDate() {
 	    var now = new Date()
-	    var offsetMinutes = now.getTimezoneOffset() // negative if ahead of UTC
-	    var local = new Date(now.getTime() - offsetMinutes * 60 * 1000)
+	    var local = new Date(now.getTime())
 	    dateLabel.text = local.toLocaleDateString(Qt.locale(), config.DateFormat)
 	}
     }
@@ -39,7 +38,7 @@ Column {
 	function updateTime() {
 	    var now = new Date()
 	    var offsetMinutes = now.getTimezoneOffset()
-	    var local = new Date(now.getTime() - offsetMinutes * 60 * 1000)
+	    var local = new Date(now.getTime())
 	    timeLabel.text = local.toLocaleTimeString(Qt.locale(), config.TimeFormat)
 	}
     }
