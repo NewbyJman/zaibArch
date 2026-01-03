@@ -39,6 +39,7 @@ PKGS=(
     "parcellite"
     "vlc"
     "chromium"
+    "cups"
     "viewnior"
     "feh"
     "bat fastfetch"
@@ -73,6 +74,8 @@ sudo hwclock --systohc
 sudo systemctl --user --now disable pulseaudio.service pulseaudio.socket
 sudo systemctl --user mask pulseaudio
 sudo systemctl --user --now enable pipewire pipewire-pulse pipeware-alsa
+sudo systemctl enable cups
+//go to localhost:631 to setup printers
 
 //sh driverInstall.sh
 
