@@ -11,14 +11,14 @@ PKGS=(
     "sddm qt5-quickcontrols2 qt5-graphicaleffects"
 
     # XFCE components
-    "xfwm4 xfce4-session xfce4-settings xfce4-screensaver gvfs"
+    "xfwm4 xfce4-session xfce4-settings xfce4-screensaver"
     "xfce4-terminal tmux"
     "xfce4-xfconf"
     "xfce4-panel"
     "xfce4-power-manager xfce4-notifyd xfce4-pulseaudio-plugin xfce4-whiskermenu-plugin"    
 
     # Desktop utilities
-    "nemo nemo-preview nemo-fileroller gvfs-mtp"
+    "nemo nemo-preview nemo-fileroller gvfs gvfs-mtp ntfsfix ffmpegthumbnailer"
     "xarchiver"
     "lxtask"
     "noto-fonts noto-fonts-emoji ttf-nerd-fonts-symbols-mono"
@@ -35,19 +35,17 @@ PKGS=(
     "pavucontrol"
 
     # Extras
-    "flameshot"
     "parcellite"
-    "vlc"
     "chromium"
     "cups"
-    "viewnior"
-    "feh"
+    "scrcpy"
+    "viewnior feh flameshot vlc vlc-plugins-all"
     "bat fastfetch"
-    "gimp"
-    "mousepad"
+    "gimp kdenlive"
+    "libreoffice-fresh"
+    "mousepad qalculate-gtk"
     "cheese"
     "qbittorrent"
-    "kdenlive"
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -57,9 +55,9 @@ done
 YPKGS=(
     "mugshot"
     "xfce4-docklike-plugin"
+    "localsend"
     "7-zip"
     "albert"
-    "onlyoffice-bin"
     "waterfox-bin"
 )
 
