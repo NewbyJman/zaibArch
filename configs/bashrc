@@ -27,6 +27,8 @@ alias remove='gio trash'
 alias rename="gio rename"
 alias cls='clear'
 alias date='date "+%a %d-%b-%y %I:%M%P"'
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "percentage"'
+alias battery-full='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 alias ls='ls -aF --color=always'
 alias dir='dir --color=always'
 alias vdir='vdir --color=always'
@@ -45,6 +47,7 @@ alias vi='vim'
 alias svim='sudo nvim'
 alias set-bg='feh --bg-scale ~/.local/share/gitMedia/wallpaper.png'
 alias py='python'
+alias py-env='python3 -m venv .venv && source .venv/bin/activate'
 
 alias pac='sudo pacman -S --needed --noconfirm'
 alias pac-get='sudo pacman -S --needed'
@@ -57,6 +60,7 @@ alias yays='yay -S --noconfirm --removemake --noanswerclean --noanswerdiff --nee
 
 alias gpui='sudo envycontrol -s integrated'
 alias gpud='sudo envycontrol -s nvidia'
+alias dex='scrcpy --new-display=1920x1080/100'
 
 case "$TERM" in
 	xterm-color|*-256color) color_prompt=yes;;
@@ -68,6 +72,3 @@ else
     PS1='\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
-
-#PS1='[\u@\h \W]\$ '
-
